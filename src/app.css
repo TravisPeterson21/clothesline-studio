@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* Pull in Tailwind Typography plugin */
+@plugin "@tailwindcss/typography";
+
+/* 🌞 Light mode — defaults */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #171123;
+  --color-accent: #F46036;
+  --color-slateblue: #5B85AA;
+  --color-indigo: #414770;
+  --color-plum: #372248;
+  --color-night: #171123;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+/* 🌚 Dark mode — only activates when `.dark` class is on <html> */
+:root.dark {
+  --color-bg: #171123;
+  --color-text: #ffffff;
+  --color-accent: #F46036;
+  --color-slateblue: #A4BEDC;
+  --color-indigo: #B0B3D6;
+  --color-plum: #5A3C65;
+  --color-night: #ffffff;
+}
+
+/* 🌐 Global base styles */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+/* ♿ Accessibility overrides */
+:root.a11y-large-text { font-size: 115%; }
+:root.a11y-contrast {
+  --color-bg: #000000 !important;
+  --color-text: #ffffff !important;
+  --color-accent: #ffff00 !important;
+}
+:root.a11y-reduce-motion {
+  scroll-behavior: auto !important;
+  animation: none !important;
+  transition: none !important;
+}
+:root.a11y-dyslexic {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
